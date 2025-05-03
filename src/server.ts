@@ -17,3 +17,4 @@ app.get('/usuarios', async (request, reply) => {
 app.listen({ port: env.APP_PORT }, () => {
   console.log(`Server listening on port ${env.APP_PORT}`);
 });
+""
