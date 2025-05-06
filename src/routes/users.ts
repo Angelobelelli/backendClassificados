@@ -51,7 +51,7 @@ export async function usersRoutes(app: FastifyInstance) {
 			return replay.status(401).send({message: "User not found"});
 		}
 
-		const isPasswordCorrect = await bcrypt.compare(password, user.password);
+		const isPasswordCorrect = await bcrypt.compare(password, user.senha);
 		if (!isPasswordCorrect) {
 			return replay.status(401).send({message: "Invalid password"});
 		}

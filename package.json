@@ -10,6 +10,7 @@
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
+		"@types/bcrypt": "^5.0.2",
 		"@types/knex": "^0.15.2",
 		"@types/node": "^22.15.3",
 		"tsx": "^4.19.4",
