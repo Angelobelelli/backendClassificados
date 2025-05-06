@@ -1,7 +1,8 @@
 import {FastifyInstance} from "fastify";
 import {db} from "../database";
 import {z} from "zod";
-import crypto from "crypto";
+import bcrypt from "bcrypt";
+
 
 export async function usersRoutes(app: FastifyInstance) {
 
@@ -34,5 +35,27 @@ export async function usersRoutes(app: FastifyInstance) {
 		});
 
 		return replay.status(201).send();
+	});
+
+	app.post("/login", async (request, replay) => {
+		const createTransactionBody = z.object({
+			email: z.string().email(),
+			password: z.string().min(6),
+		});
+
+		const {email, password} = createTransactionBody.parse(request.body);
+
+		const user = await db("users").where("email", email).first();
+
+		if (!user) {
+			return replay.status(401).send({message: "User not found"});
+		}
+
+		const isPasswordCorrect = await bcrypt.compare(password, user.password);
+		if (!isPasswordCorrect) {
+			return replay.status(401).send({message: "Invalid password"});
+		}
+
+		return replay.status(200).send({user});
 	});
 }
