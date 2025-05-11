@@ -5,11 +5,11 @@ import {Knex} from "knex";
 declare module "knex/types/tables" {
 	export interface Tables {
 		users: {
-			id: number;
-			nome: string;
+			id: string | null;
+			nome: string | null;
 			image: string | null;
-			email: string;
-			senha: string;
+			email: string | null;
+			senha: string | null;
 			whatsapp: string | null;
 			telefone: string | null;
 			cpf: string | null;
@@ -24,23 +24,23 @@ declare module "knex/types/tables" {
 			numero: string | null;
 		};
 		categories: {
-			id: number;
+			id: string;
 			nome: string;
 		};
 		products: {
-			id: number;
-			nome: string;
+			id: string | null;
+			nome: string | null;
 			image: string | null;
-			preco: number;
-			descricao: string;
-			data_anuncio: Date;
-			usuario_id: number;
-			categoria_id: number;
+			preco: string | null;
+			descricao: string | null;
+			data_anuncio: Date | null;
+			usuario_id: string | null;
+			categories_id: string | null;
 		};
 		product_images: {
-			id: number;
-			produto_id: number;
-			url: string;
+			id: string | null;
+			produto_id: string | null;
+			url: string | null;
 		};
 	}
 }
