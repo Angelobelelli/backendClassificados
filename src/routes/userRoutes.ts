@@ -6,4 +6,5 @@ export async function userRoutes(fastify: FastifyInstance) {
   fastify.get('/users/:id', UserController.show);
   fastify.post('/users', UserController.store);
   fastify.delete('/users/:id', UserController.destroy);
+  fastify.post('/login', UserController.login)
 }
