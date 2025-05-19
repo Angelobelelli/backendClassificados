@@ -2,6 +2,7 @@ import {FastifyRequest, FastifyReply} from "fastify";
 import {UserModel} from "../models/UserModel";
 import {Tables} from "knex/types/tables";
 import jwt from "jsonwebtoken";
+
 import {env} from "../env";
 
 type User = Tables["users"];
